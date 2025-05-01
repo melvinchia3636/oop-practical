@@ -1,10 +1,9 @@
 package Tasks.items;
 
-import java.awt.*;
-
 import Tasks.TaskInstance;
 import UI.MainWindow;
-import UI.components.SubmitButton;
+import UI.components.Form;
+import UI.components.FormItem;
 import UI.components.TextInput;
 
 import javax.swing.*;
@@ -45,63 +44,17 @@ public class P2Task1 extends TaskInstance {
 
     @Override
     protected void prepareForm() {
-        JPanel inputForm = new JPanel();
-        inputForm.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-
         waterAmountInput = new TextInput();
         initialTemperatureInput = new TextInput();
         finalTemperatureInput = new TextInput();
-        SubmitButton submitButton = new SubmitButton(e -> onSubmit());
 
-        // Gap between each component
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.weightx = 0;
-        gbc.gridy = 0;
+        FormItem[] formItems = new FormItem[]{
+                new FormItem("Water amount (in kg): ", waterAmountInput),
+                new FormItem("Initial temperature (in Celsius): ", initialTemperatureInput),
+                new FormItem("Final temperature (in Celsius): ", finalTemperatureInput)
+        };
+        Form inputForm = new Form(formItems, e -> onSubmit());
 
-        // Row 1: Water Amount
-        gbc.gridx = 0;
-        inputForm.add(new JLabel("Water Amount:"), gbc);
-
-        gbc.gridx = 1;
-        gbc.weightx = 1.0;
-        inputForm.add(waterAmountInput, gbc);
-
-        // Row 2: Initial Temperature
-        gbc.gridy++;
-        gbc.gridx = 0;
-        gbc.weightx = 0;
-        inputForm.add(new JLabel("Initial Temperature:"), gbc);
-
-        gbc.gridx = 1;
-        gbc.weightx = 1.0;
-        inputForm.add(initialTemperatureInput, gbc);
-
-        // Row 3: Final Temperature
-        gbc.gridy++;
-        gbc.gridx = 0;
-        gbc.weightx = 0;
-        inputForm.add(new JLabel("Final Temperature:"), gbc);
-
-        gbc.gridx = 1;
-        gbc.weightx = 1.0;
-        inputForm.add(finalTemperatureInput, gbc);
-
-        // Row 4: Glue to push Submit to bottom
-        gbc.gridy++;
-        gbc.gridx = 0;
-        gbc.gridwidth = 2;
-        gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.BOTH;
-        inputForm.add(Box.createVerticalGlue(), gbc);
-
-        // Row 5: Submit Button
-        gbc.gridy++;
-        gbc.weighty = 0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        inputForm.add(submitButton, gbc);
-
-        mainWindow.taskPanel.add(inputForm);
+        mainWindow.insertForm(inputForm);
     }
 }

@@ -2,11 +2,11 @@ package Tasks.items;
 
 import Tasks.TaskInstance;
 import UI.MainWindow;
-import UI.components.SubmitButton;
+import UI.components.Form;
+import UI.components.FormItem;
 import UI.components.TextInput;
 
 import javax.swing.*;
-import java.awt.*;
 import java.text.DecimalFormat;
 
 public class P2Task5 extends TaskInstance {
@@ -48,53 +48,15 @@ public class P2Task5 extends TaskInstance {
 
     @Override
     protected void prepareForm() {
-        JPanel inputForm = new JPanel();
-        inputForm.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-
         heightInput = new TextInput();
         weightInput = new TextInput();
-        SubmitButton submitButton = new SubmitButton(e -> onSubmit());
 
+        FormItem[] formItems = new FormItem[]{
+                new FormItem("Height (in inches):", heightInput),
+                new FormItem("Weight (in pounds):", weightInput)
+        };
+        Form inputForm = new Form(formItems, e -> onSubmit());
 
-        // Gap between each component
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.weightx = 0;
-        gbc.gridy = 0;
-
-        // Row 1: Height (in inches)
-        gbc.gridx = 0;
-        inputForm.add(new JLabel("Height (in inches):"), gbc);
-
-        gbc.gridx = 1;
-        gbc.weightx = 1.0;
-        inputForm.add(heightInput, gbc);
-
-        // Row 2: Weight (in pounds)
-        gbc.gridy++;
-        gbc.gridx = 0;
-        gbc.weightx = 0;
-        inputForm.add(new JLabel("Weight (in pounds):"), gbc);
-
-        gbc.gridx = 1;
-        gbc.weightx = 1.0;
-        inputForm.add(weightInput, gbc);
-
-        // Row 3: Glue to push Submit to bottom
-        gbc.gridy++;
-        gbc.gridx = 0;
-        gbc.gridwidth = 2;
-        gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.BOTH;
-        inputForm.add(Box.createVerticalGlue(), gbc);
-
-        // Row 4: Submit Button
-        gbc.gridy++;
-        gbc.weighty = 0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        inputForm.add(submitButton, gbc);
-
-        mainWindow.taskPanel.add(inputForm);
+        mainWindow.insertForm(inputForm);
     }
 }

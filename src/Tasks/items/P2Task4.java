@@ -2,7 +2,8 @@ package Tasks.items;
 
 import Tasks.TaskInstance;
 import UI.MainWindow;
-import UI.components.SubmitButton;
+import UI.components.Form;
+import UI.components.FormItem;
 import UI.components.TextInput;
 
 import javax.swing.*;
@@ -95,41 +96,13 @@ public class P2Task4 extends TaskInstance {
 
     @Override
     protected void prepareForm() {
-        JPanel inputForm = new JPanel();
-        inputForm.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-
         monthlySavingAmountInput = new TextInput();
-        SubmitButton submitButton = new SubmitButton(e -> onSubmit());
 
-        // Gap between each component
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.weightx = 0;
-        gbc.gridy = 0;
+        FormItem[] formItems = new FormItem[]{
+                new FormItem("Monthly saving amount:", monthlySavingAmountInput),
+        };
+        Form inputForm = new Form(formItems, e -> onSubmit());
 
-        // Row 1: Monthly saving amount Input
-        gbc.gridx = 0;
-        inputForm.add(new JLabel("Monthly saving amount:"), gbc);
-
-        gbc.gridx = 1;
-        gbc.weightx = 1.0;
-        inputForm.add(monthlySavingAmountInput, gbc);
-
-        // Row 2: Glue to push Submit to bottom
-        gbc.gridy++;
-        gbc.gridx = 0;
-        gbc.gridwidth = 2;
-        gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.BOTH;
-        inputForm.add(Box.createVerticalGlue(), gbc);
-
-        // Row 3: Submit Button
-        gbc.gridy++;
-        gbc.weighty = 0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        inputForm.add(submitButton, gbc);
-
-        mainWindow.taskPanel.add(inputForm);
+        mainWindow.insertForm(inputForm);
     }
 }

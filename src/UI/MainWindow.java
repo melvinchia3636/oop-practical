@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Objects;
 import javax.swing.*;
 import javax.swing.border.Border;
+
 import com.formdev.flatlaf.FlatLightLaf;
 
 public class MainWindow {
@@ -20,8 +21,8 @@ public class MainWindow {
     private JPanel taskContainer;
     private JPanel footerLabelPanel;
 
-    protected JLabel taskDescriptionLabel;
-    public JPanel taskPanel;
+    private JLabel taskDescriptionLabel;
+    private JPanel taskPanel;
 
     public MainWindow() {
         prepareTaskInstances();
@@ -31,6 +32,10 @@ public class MainWindow {
 
     public void setTaskDescription(String description) {
         taskDescriptionLabel.setText("<html>" + description + "</html>");
+    }
+
+    public void insertForm(JPanel formPanel) {
+        taskPanel.add(formPanel);
     }
 
     private void onTaskChange(String task) {
@@ -80,18 +85,18 @@ public class MainWindow {
     }
 
     private void prepareTaskSelectBox() {
+        // Extract task name from each task instance in the instances array
         String[] taskNames = new String[taskInstances.length];
-
         for (int i = 0; i < taskInstances.length; i++) {
             taskNames[i] = taskInstances[i].name;
         }
 
+        // Initialize the task selection box
         taskSelectBox = new JComboBox<>(taskNames);
         taskSelectBox.setSelectedIndex(0);
         taskSelectBox.setBorder(BorderFactory.createCompoundBorder(
                 taskSelectBox.getBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)
         ));
-
         taskSelectBox.addActionListener(e -> onTaskChange(Objects.requireNonNull(taskSelectBox.getSelectedItem()).toString()));
     }
 
@@ -105,16 +110,18 @@ public class MainWindow {
         Border padding = BorderFactory.createEmptyBorder(10, 10, 10, 10);
         taskContainer.setBorder(BorderFactory.createCompoundBorder(border, padding));
 
+        // Initialize the task description and implementation title label
         JLabel taskDescriptionTitleLabel = new JLabel("Task Description:", JLabel.LEFT);
         taskDescriptionTitleLabel.setFont(taskDescriptionTitleLabel.getFont().deriveFont(14.0f).deriveFont(Font.BOLD));
         taskDescriptionTitleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        taskDescriptionLabel = new JLabel();
-        taskDescriptionLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-
         JLabel taskImplementationTitleLabel = new JLabel("Task Implementation:", JLabel.LEFT);
         taskImplementationTitleLabel.setFont(taskImplementationTitleLabel.getFont().deriveFont(14.0f).deriveFont(Font.BOLD));
         taskImplementationTitleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        // Initialize the task description and task panel that will have their content change dynamically
+        taskDescriptionLabel = new JLabel();
+        taskDescriptionLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         taskPanel = new JPanel();
         taskPanel.setLayout(new BoxLayout(taskPanel, BoxLayout.Y_AXIS));
@@ -182,7 +189,7 @@ public class MainWindow {
     }
 
     private void prepareGUI() {
-         // Initialize the main frame
+        // Initialize the main frame
         JFrame mainFrame = new JFrame("[ITS63304] Practical 2");
         mainFrame.setSize(600, 570);
         mainFrame.setMinimumSize(new Dimension(600, 570));
