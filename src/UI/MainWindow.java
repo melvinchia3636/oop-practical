@@ -4,14 +4,11 @@ import Tasks.TaskInstance;
 import Tasks.items.*;
 
 import java.awt.*;
-import java.awt.font.TextAttribute;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import UI.components.HyperLinkButton;
 import com.formdev.flatlaf.FlatLightLaf;
 
 public class MainWindow {
@@ -153,34 +150,8 @@ public class MainWindow {
         footerLabel2.setMaximumSize(new Dimension(Integer.MAX_VALUE, 100));
         footerLabel2.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // create link button to my portfolio
-        JButton hyperlinkButton = new JButton("Melvin Chia");
-        hyperlinkButton.setForeground(Color.BLUE);
-        hyperlinkButton.setBackground(null);
-        Border emptyBorder = BorderFactory.createEmptyBorder();
-        hyperlinkButton.setBorder(emptyBorder);
-        hyperlinkButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-        // add underline to the button
-        Font font = hyperlinkButton.getFont().deriveFont(10.0f);
-        Map<TextAttribute, Object> attributes = new HashMap<>(font.getAttributes());
-        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-        hyperlinkButton.setFont(font.deriveFont(attributes));
-
-        // onClick event listener
-        // Fortunately lambda expression is already a thing in Java 8 :)
-        hyperlinkButton.addActionListener(e -> {
-            Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-            if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
-                try {
-                    // Open my portfolio in the browser :D
-                    URL url = new URL("https://melvinchia.dev");
-                    desktop.browse(url.toURI());
-                } catch (Exception err) {
-                    System.out.println("Browse failed");
-                }
-            }
-        });
+        // create link button to my portfolio :D
+        HyperLinkButton hyperlinkButton = new HyperLinkButton("Melvin Chia", "https://melvinchia.dev");
 
         // Add everything into the container
         footerLabelPanel.add(footerLabel1);
