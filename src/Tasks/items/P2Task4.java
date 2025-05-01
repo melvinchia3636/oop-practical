@@ -2,6 +2,7 @@ package Tasks.items;
 
 import Tasks.TaskInstance;
 import UI.MainWindow;
+import UI.components.SubmitButton;
 import UI.components.TextInput;
 
 import javax.swing.*;
@@ -99,13 +100,7 @@ public class P2Task4 extends TaskInstance {
         GridBagConstraints gbc = new GridBagConstraints();
 
         monthlySavingAmountInput = new TextInput();
-
-        JButton submitButton = new JButton("Submit");
-        submitButton.addActionListener(e -> {
-        });
-        submitButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
-        submitButton.addActionListener(e -> onSubmit());
-
+        SubmitButton submitButton = new SubmitButton(e -> onSubmit());
 
         // Gap between each component
         gbc.insets = new Insets(5, 5, 5, 5);

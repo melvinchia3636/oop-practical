@@ -2,6 +2,7 @@ package Tasks.items;
 
 import Tasks.TaskInstance;
 import UI.MainWindow;
+import UI.components.SubmitButton;
 import UI.components.TextInput;
 
 import javax.swing.*;
@@ -13,7 +14,7 @@ public class P2Task2Linear extends TaskInstance {
     public P2Task2Linear(MainWindow window) {
         super(window);
 
-        name = "Task 2 - Multiply the digits in an integer";
+        name = "Task 2 - Multiply the Digits in an Integer";
         description = "<p>Write a program that reads an integer between 0 and 1000 and multiplies all the digits in the integer. For example, if an integer is 932, the multiplication of all its digits is 54.</p><p><i>Hint:</i> Use the % operator to extract digits, and use the / operator to remove the extracted digit. For instance, 932 % 10 = 2 and 932 / 10 = 93.</p><p><i>For now, just focus on 3 digits.</i></p>";
     }
 
@@ -52,12 +53,7 @@ public class P2Task2Linear extends TaskInstance {
         GridBagConstraints gbc = new GridBagConstraints();
 
         numberInput = new TextInput();
-
-        JButton submitButton = new JButton("Submit");
-        submitButton.addActionListener(e -> {
-        });
-        submitButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
-        submitButton.addActionListener(e -> onSubmit());
+        SubmitButton submitButton = new SubmitButton(e -> onSubmit());
 
 
         // Gap between each component

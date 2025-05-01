@@ -11,28 +11,11 @@ public class TextInput extends JTextField {
         super();
 
         initBorder();
-        addFocusListener(new FocusListener() {
-            public void focusGained(FocusEvent e) {
-                focusBorder();
-            }
-
-            public void focusLost(FocusEvent e) {
-                initBorder();
-            }
-        });
     }
 
     private void initBorder() {
         Border paddingBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
-        Border underlineBorder = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.LIGHT_GRAY);
-        Border inputBorder = BorderFactory.createCompoundBorder(underlineBorder, paddingBorder);
-        setBorder(inputBorder);
-    }
-
-    private void focusBorder() {
-        Border paddingBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
-        Border border = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY);
-        Border inputBorder = BorderFactory.createCompoundBorder(border, paddingBorder);
+        Border inputBorder = BorderFactory.createCompoundBorder(getBorder(), paddingBorder);
         setBorder(inputBorder);
     }
 }

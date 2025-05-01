@@ -4,6 +4,7 @@ import java.awt.*;
 
 import Tasks.TaskInstance;
 import UI.MainWindow;
+import UI.components.SubmitButton;
 import UI.components.TextInput;
 
 import javax.swing.*;
@@ -16,7 +17,7 @@ public class P2Task1 extends TaskInstance {
     public P2Task1(MainWindow window) {
         super(window);
 
-        name = "Task 1 - Science: calculating energy";
+        name = "Task 1 - Science: Calculating Energy";
         description = ("<p>Write a program that calculates the energy needed to heat water from an initial temperature to a final temperature. Your program should prompt the user to enter the amount of water in kilograms and the initial and final temperatures of the water. The formula to compute the energy is</p><code>Q = M * (finalTemperature - initialTemperature) * 4184</code><p>where M is the weight of water in kilograms, initial and final temperatures are in degrees Celsius, and energy Q is measured in joules.</p>");
     }
 
@@ -51,13 +52,7 @@ public class P2Task1 extends TaskInstance {
         waterAmountInput = new TextInput();
         initialTemperatureInput = new TextInput();
         finalTemperatureInput = new TextInput();
-
-        JButton submitButton = new JButton("Submit");
-        submitButton.addActionListener(e -> {
-        });
-        submitButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
-        submitButton.addActionListener(e -> onSubmit());
-
+        SubmitButton submitButton = new SubmitButton(e -> onSubmit());
 
         // Gap between each component
         gbc.insets = new Insets(5, 5, 5, 5);

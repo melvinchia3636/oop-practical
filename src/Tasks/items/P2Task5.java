@@ -2,6 +2,7 @@ package Tasks.items;
 
 import Tasks.TaskInstance;
 import UI.MainWindow;
+import UI.components.SubmitButton;
 import UI.components.TextInput;
 
 import javax.swing.*;
@@ -53,12 +54,7 @@ public class P2Task5 extends TaskInstance {
 
         heightInput = new TextInput();
         weightInput = new TextInput();
-
-        JButton submitButton = new JButton("Submit");
-        submitButton.addActionListener(e -> {
-        });
-        submitButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
-        submitButton.addActionListener(e -> onSubmit());
+        SubmitButton submitButton = new SubmitButton(e -> onSubmit());
 
 
         // Gap between each component

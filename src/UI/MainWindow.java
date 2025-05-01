@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Objects;
 import javax.swing.*;
 import javax.swing.border.Border;
+import com.formdev.flatlaf.FlatLightLaf;
 
 public class MainWindow {
     private TaskInstance[] taskInstances;
@@ -87,6 +88,9 @@ public class MainWindow {
 
         taskSelectBox = new JComboBox<>(taskNames);
         taskSelectBox.setSelectedIndex(0);
+        taskSelectBox.setBorder(BorderFactory.createCompoundBorder(
+                taskSelectBox.getBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)
+        ));
 
         taskSelectBox.addActionListener(e -> onTaskChange(Objects.requireNonNull(taskSelectBox.getSelectedItem()).toString()));
     }
@@ -145,6 +149,7 @@ public class MainWindow {
         // create link button to my portfolio
         JButton hyperlinkButton = new JButton("Melvin Chia");
         hyperlinkButton.setForeground(Color.BLUE);
+        hyperlinkButton.setBackground(null);
         Border emptyBorder = BorderFactory.createEmptyBorder();
         hyperlinkButton.setBorder(emptyBorder);
         hyperlinkButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -165,7 +170,7 @@ public class MainWindow {
                     URL url = new URL("https://melvinchia.dev");
                     desktop.browse(url.toURI());
                 } catch (Exception err) {
-                   System.out.println("Browse failed");
+                    System.out.println("Browse failed");
                 }
             }
         });
@@ -177,10 +182,10 @@ public class MainWindow {
     }
 
     private void prepareGUI() {
-        // Initialize the main frame
+         // Initialize the main frame
         JFrame mainFrame = new JFrame("[ITS63304] Practical 2");
-        mainFrame.setSize(600, 550);
-        mainFrame.setMinimumSize(new Dimension(600, 550));
+        mainFrame.setSize(600, 570);
+        mainFrame.setMinimumSize(new Dimension(600, 570));
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -210,6 +215,8 @@ public class MainWindow {
     }
 
     public static void main(String[] args) {
+        FlatLightLaf.setup();
+
         new MainWindow();
     }
 }

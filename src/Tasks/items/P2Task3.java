@@ -2,6 +2,7 @@ package Tasks.items;
 
 import Tasks.TaskInstance;
 import UI.MainWindow;
+import UI.components.SubmitButton;
 import UI.components.TextInput;
 
 import javax.swing.*;
@@ -21,7 +22,7 @@ public class P2Task3 extends TaskInstance {
     public P2Task3(MainWindow window) {
         super(window);
 
-        name = "Task 3 - Find the number of years";
+        name = "Task 3 - Find the Number of Years";
         description = "<p>Write a program that prompts the user to enter the minutes (e.g., 1 billion), and displays the number of years and remaining days for the minutes. For simplicity, assume that a year has 365 days. Here is a sample run:</p>";
     }
 
@@ -57,12 +58,7 @@ public class P2Task3 extends TaskInstance {
         GridBagConstraints gbc = new GridBagConstraints();
 
         minutesInput = new TextInput();
-
-        JButton submitButton = new JButton("Submit");
-        submitButton.addActionListener(e -> {
-        });
-        submitButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
-        submitButton.addActionListener(e -> onSubmit());
+        SubmitButton submitButton = new SubmitButton(e -> onSubmit());
 
         // Gap between each component
         gbc.insets = new Insets(5, 5, 5, 5);
