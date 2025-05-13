@@ -16,42 +16,66 @@ import com.formdev.flatlaf.FlatLightLaf;
 
 public class MainWindow {
     private TaskGroup[] allTasks;
+
     private JPanel headerPanel;
-    private JComboBox<String> taskGroupComboBox;
-    private JComboBox<String> taskSelectBox;
-    private JPanel taskContainer;
     private JPanel footerLabelPanel;
 
+    // Components for selecting tasks
+    private JComboBox<String> taskGroupComboBox;
+    private JComboBox<String> taskSelectBox;
+
+    // Components for displaying task instances
+    private JPanel taskContainer;
     private JLabel taskDescriptionLabel;
     private JPanel taskPanel;
 
     public MainWindow() {
         prepareTaskInstances();
         prepareGUI();
+
+        // Run the first task in the first task group
         onTaskGroupChange(allTasks[0].name);
     }
 
+    // Method exposed to TaskInstance to wrap task descriptions in html tag for text formatting
     public void setTaskDescription(String description) {
         taskDescriptionLabel.setText("<html>" + description + "</html>");
     }
 
+    // Method exposed to TaskInstance to add form into the taskPanel
     public void insertForm(JPanel formPanel) {
         taskPanel.add(formPanel);
     }
 
+    // Handle task group selection, updating task select box accordingly
     private void onTaskGroupChange(String selectedGroup) {
+        TaskInstance[] target = new TaskInstance[0];
+
+        // Find the target taskGroup
         for (TaskGroup taskGroup : allTasks) {
             if (taskGroup.name.equals(selectedGroup)) {
-                updateTaskSelectBox(taskGroup.taskInstances);
+                target = taskGroup.taskInstances;
                 break;
             }
         }
+
+        // Create an array of task names
+        String[] taskNames = new String[target.length];
+        for (int i = 0; i < target.length; i++) {
+            taskNames[i] = target[i].name;
+        }
+
+        // Refresh the task select box with new list of tasks
+        taskSelectBox.removeAllItems();
+        for (String taskName : taskNames) {
+            taskSelectBox.addItem(taskName);
+        }
     }
 
+    // Handle task selection
     private void onTaskChange() {
         try {
             String task = Objects.requireNonNull(taskSelectBox.getSelectedItem()).toString();
-
 
             // Reset task description and implementation panel
             taskDescriptionLabel.setText("");
@@ -69,19 +93,7 @@ public class MainWindow {
         } catch (Exception ignored) {}
     }
 
-    private void updateTaskSelectBox(TaskInstance[] taskInstances) {
-        String[] taskNames = new String[taskInstances.length];
-
-        for (int i = 0; i < taskInstances.length; i++) {
-            taskNames[i] = taskInstances[i].name;
-        }
-
-        taskSelectBox.removeAllItems();
-        for (String taskName : taskNames) {
-            taskSelectBox.addItem(taskName);
-        }
-    }
-
+    // Manage your task instances here :)
     private void prepareTaskInstances() {
         TaskInstance[] week2Tasks = new TaskInstance[]{
                 new P2Task1(this),
@@ -102,12 +114,14 @@ public class MainWindow {
                 new P4Task4(this),
                 new P4Task5(this),
                 new P4Task5Amended(this),
+                new P4Task6(this),
+                new P4Task7(this),
         };
 
         allTasks = new TaskGroup[]{
-                new TaskGroup("Week 2", week2Tasks),
-                new TaskGroup("Week 3", week3Tasks),
-                new TaskGroup("Week 4", week4Tasks),
+                new TaskGroup("Week 2 - Linear Implementations", week2Tasks),
+                new TaskGroup("Week 3 - Selection Structures", week3Tasks),
+                new TaskGroup("Week 4 - Java Class API", week4Tasks),
         };
     }
 
@@ -182,11 +196,13 @@ public class MainWindow {
         taskDescriptionLabel = new JLabel();
         taskDescriptionLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
+        // The component containing the task form
         taskPanel = new JPanel();
         taskPanel.setLayout(new BoxLayout(taskPanel, BoxLayout.Y_AXIS));
         taskPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         taskPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
 
+        // Add everything into the outermost wrapper
         taskContainer.add(taskDescriptionTitleLabel);
         taskContainer.add(Box.createRigidArea(new Dimension(0, 5)));
         taskContainer.add(taskDescriptionLabel);
