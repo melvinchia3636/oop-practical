@@ -15,7 +15,7 @@ public class P4Task1 extends TaskInstance {
     public P4Task1(MainWindow window) {
         super(window);
 
-        this.name = "Week 4 Task 1 - Geometry: Area of a Regular Polygon";
+        this.name = "Task 1 - Geometry: Area of a Regular Polygon";
         this.description = "<p>A regular polygon is an $n$-sided polygon in which all sides are of the same length and all angles have the same degree (i.e., the polygon is both equilateral and equiangular). The formula for computing the area of a regular polygon is</p><center><code>Area = (n x s^2) / (4 x tan(pi/n))</code></center><p>Here, s is the length of a side. Write a program that prompts the user to enter the number of sides and their length of a regular polygon and displays its area.</p>";
     }
 

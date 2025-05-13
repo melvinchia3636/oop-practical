@@ -16,7 +16,7 @@ public class P2Task1 extends TaskInstance {
     public P2Task1(MainWindow window) {
         super(window);
 
-        name = "Week 2 Task 1 - Science: Calculating Energy";
+        name = "Task 1 - Science: Calculating Energy";
         description = ("<p>Write a program that calculates the energy needed to heat water from an initial temperature to a final temperature. Your program should prompt the user to enter the amount of water in kilograms and the initial and final temperatures of the water. The formula to compute the energy is</p><code>Q = M * (finalTemperature - initialTemperature) * 4184</code><p>where M is the weight of water in kilograms, initial and final temperatures are in degrees Celsius, and energy Q is measured in joules.</p>");
     }
 

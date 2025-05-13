@@ -1,5 +1,6 @@
 package UI;
 
+import Tasks.TaskGroup;
 import Tasks.TaskInstance;
 import Tasks.Week2.*;
 
@@ -9,13 +10,14 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 import Tasks.Week3.P3Task1;
-import Tasks.Week4.P4Task1;
+import Tasks.Week4.*;
 import UI.components.HyperLinkButton;
 import com.formdev.flatlaf.FlatLightLaf;
 
 public class MainWindow {
-    private TaskInstance[] taskInstances;
+    private TaskGroup[] allTasks;
     private JPanel headerPanel;
+    private JComboBox<String> taskGroupComboBox;
     private JComboBox<String> taskSelectBox;
     private JPanel taskContainer;
     private JPanel footerLabelPanel;
@@ -26,7 +28,7 @@ public class MainWindow {
     public MainWindow() {
         prepareTaskInstances();
         prepareGUI();
-        taskInstances[0].run();
+        onTaskGroupChange(allTasks[0].name);
     }
 
     public void setTaskDescription(String description) {
@@ -37,28 +39,75 @@ public class MainWindow {
         taskPanel.add(formPanel);
     }
 
-    private void onTaskChange(String task) {
-        // Reset task description and implementation panel
-        taskDescriptionLabel.setText("");
-        taskPanel.removeAll();
-
-        // Look for the targeted task and run
-        for (TaskInstance taskInstance : taskInstances) {
-            if (taskInstance.name.equals(task)) {
-                taskInstance.run();
+    private void onTaskGroupChange(String selectedGroup) {
+        for (TaskGroup taskGroup : allTasks) {
+            if (taskGroup.name.equals(selectedGroup)) {
+                updateTaskSelectBox(taskGroup.taskInstances);
+                break;
             }
         }
     }
 
+    private void onTaskChange() {
+        try {
+            String task = Objects.requireNonNull(taskSelectBox.getSelectedItem()).toString();
+
+
+            // Reset task description and implementation panel
+            taskDescriptionLabel.setText("");
+            taskPanel.removeAll();
+
+            // Look for the targeted task and run
+            for (TaskGroup taskGroup : allTasks) {
+                for (TaskInstance taskInstance : taskGroup.taskInstances) {
+                    if (taskInstance.name.equals(task)) {
+                        taskInstance.run();
+                        break;
+                    }
+                }
+            }
+        } catch (Exception ignored) {}
+    }
+
+    private void updateTaskSelectBox(TaskInstance[] taskInstances) {
+        String[] taskNames = new String[taskInstances.length];
+
+        for (int i = 0; i < taskInstances.length; i++) {
+            taskNames[i] = taskInstances[i].name;
+        }
+
+        taskSelectBox.removeAllItems();
+        for (String taskName : taskNames) {
+            taskSelectBox.addItem(taskName);
+        }
+    }
+
     private void prepareTaskInstances() {
-        taskInstances = new TaskInstance[]{
+        TaskInstance[] week2Tasks = new TaskInstance[]{
                 new P2Task1(this),
                 new P2Task2Linear(this),
                 new P2Task3(this),
                 new P2Task4(this),
                 new P2Task5(this),
+        };
+
+        TaskInstance[] week3Tasks = new TaskInstance[]{
                 new P3Task1(this),
+        };
+
+        TaskInstance[] week4Tasks = new TaskInstance[]{
                 new P4Task1(this),
+                new P4Task2(this),
+                new P4Task3(this),
+                new P4Task4(this),
+                new P4Task5(this),
+                new P4Task5Amended(this),
+        };
+
+        allTasks = new TaskGroup[]{
+                new TaskGroup("Week 2", week2Tasks),
+                new TaskGroup("Week 3", week3Tasks),
+                new TaskGroup("Week 4", week4Tasks),
         };
     }
 
@@ -85,20 +134,29 @@ public class MainWindow {
         headerPanel.add(secondaryTitle);
     }
 
-    private void prepareTaskSelectBox() {
-        // Extract task name from each task instance in the instances array
-        String[] taskNames = new String[taskInstances.length];
-        for (int i = 0; i < taskInstances.length; i++) {
-            taskNames[i] = taskInstances[i].name;
+    private void prepareTaskGroupsSelectBox() {
+        String[] taskGroupNames = new String[allTasks.length];
+
+        for (int i = 0; i < allTasks.length; i++) {
+            taskGroupNames[i] = allTasks[i].name;
         }
 
+        taskGroupComboBox = new JComboBox<>(taskGroupNames);
+        taskGroupComboBox.setSelectedIndex(0);
+        taskGroupComboBox.setBorder(BorderFactory.createCompoundBorder(
+                taskGroupComboBox.getBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)
+        ));
+
+        taskGroupComboBox.addActionListener(e -> onTaskGroupChange(Objects.requireNonNull(taskGroupComboBox.getSelectedItem()).toString()));
+    }
+
+    private void prepareTaskSelectBox() {
         // Initialize the task selection box
-        taskSelectBox = new JComboBox<>(taskNames);
-        taskSelectBox.setSelectedIndex(0);
+        taskSelectBox = new JComboBox<>();
         taskSelectBox.setBorder(BorderFactory.createCompoundBorder(
                 taskSelectBox.getBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)
         ));
-        taskSelectBox.addActionListener(e -> onTaskChange(Objects.requireNonNull(taskSelectBox.getSelectedItem()).toString()));
+        taskSelectBox.addActionListener(e -> onTaskChange());
     }
 
     private void prepareTaskPanel() {
@@ -166,8 +224,8 @@ public class MainWindow {
     private void prepareGUI() {
         // Initialize the main frame
         JFrame mainFrame = new JFrame("[ITS63304] Practical 2");
-        mainFrame.setSize(600, 570);
-        mainFrame.setMinimumSize(new Dimension(600, 570));
+        mainFrame.setSize(600, 650);
+        mainFrame.setMinimumSize(new Dimension(600, 650));
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -179,6 +237,7 @@ public class MainWindow {
 
         // Initialize each element / element group
         prepareHeader();
+        prepareTaskGroupsSelectBox();
         prepareTaskSelectBox();
         prepareTaskPanel();
         prepareFooter();
@@ -186,6 +245,8 @@ public class MainWindow {
         // Add all elements into the main container
         mainPanel.add(headerPanel);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 16)));
+        mainPanel.add(taskGroupComboBox);
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         mainPanel.add(taskSelectBox);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         mainPanel.add(taskContainer);
@@ -200,7 +261,5 @@ public class MainWindow {
         FlatLightLaf.setup();
 
         new MainWindow();
-
-        System.out.print(2+2+"2");
     }
 }

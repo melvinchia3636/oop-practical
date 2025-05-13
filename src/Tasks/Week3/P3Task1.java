@@ -14,7 +14,7 @@ public class P3Task1 extends TaskInstance {
     public P3Task1(MainWindow window) {
         super(window);
 
-        name = "Week 3 Task 1 - Spectrum WaveLength";
+        name = "Task 1 - Spectrum WaveLength";
         description = "<p>You must implement the following using a suitable if decision statement.\n" +
                 "1. Prompt the user to enter the wavelength, the wavelength should be of type\n" +
                 "double.\n" +

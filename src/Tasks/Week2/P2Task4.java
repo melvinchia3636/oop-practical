@@ -20,8 +20,8 @@ class ResultFrame extends JFrame {
         // basic properties of the window
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-        setPreferredSize(new Dimension(500, 220));
-        setMinimumSize(new Dimension(500, 220));
+        setPreferredSize(new Dimension(500, 250));
+        setMinimumSize(new Dimension(500, 250));
 
         // Container (with padding) for the elements
         JPanel panel = new JPanel();
@@ -65,7 +65,7 @@ public class P2Task4 extends TaskInstance {
     public P2Task4(MainWindow window) {
         super(window);
 
-        name = "Week 2 Task 4 - Financial Application: Compound Value";
+        name = "Task 4 - Financial Application: Compound Value";
         description = "<p>Suppose you save $100 each month in a savings account with annual interest rate 3.75%. Thus, the monthly interest rate is 0.0375 / 12 = 0.003125. After the first month, the value in the account becomes</p><code>100 * (1 + 0.003125) = 100.3125</code><p>After the second month, the value in the account becomes</p><code>(100+100.3125) * (1 + 0.003125) = 200.938</code><p>After the third month, the value in the account becomes</p><code>(100 + 200.938) * (1 + 0.003125) = 301.878</code><p>and so on.</p><p>Write a program that prompts the user to enter a monthly saving amount and display the account value after six months.</p>";
     }
 
