@@ -1,4 +1,4 @@
-package Tasks.items;
+package Tasks.Week2;
 
 import Tasks.TaskInstance;
 import UI.MainWindow;
@@ -22,7 +22,7 @@ public class P2Task3 extends TaskInstance {
     public P2Task3(MainWindow window) {
         super(window);
 
-        name = "Task 3 - Find the Number of Years";
+        name = "Week 2 Task 3 - Find the Number of Years";
         description = "<p>Write a program that prompts the user to enter the minutes (e.g., 1 billion), and displays the number of years and remaining days for the minutes. For simplicity, assume that a year has 365 days. Here is a sample run:</p>";
     }
 

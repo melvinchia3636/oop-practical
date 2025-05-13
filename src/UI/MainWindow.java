@@ -1,13 +1,15 @@
 package UI;
 
 import Tasks.TaskInstance;
-import Tasks.items.*;
+import Tasks.Week2.*;
 
 import java.awt.*;
 import java.util.Objects;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import Tasks.Week3.P3Task1;
+import Tasks.Week4.P4Task1;
 import UI.components.HyperLinkButton;
 import com.formdev.flatlaf.FlatLightLaf;
 
@@ -54,7 +56,9 @@ public class MainWindow {
                 new P2Task2Linear(this),
                 new P2Task3(this),
                 new P2Task4(this),
-                new P2Task5(this)
+                new P2Task5(this),
+                new P3Task1(this),
+                new P4Task1(this),
         };
     }
 
@@ -196,5 +200,7 @@ public class MainWindow {
         FlatLightLaf.setup();
 
         new MainWindow();
+
+        System.out.print(2+2+"2");
     }
 }

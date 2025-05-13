@@ -1,4 +1,4 @@
-package Tasks.items;
+package Tasks.Week2;
 
 import Tasks.TaskInstance;
 import UI.MainWindow;
@@ -14,7 +14,7 @@ public class P2Task2Linear extends TaskInstance {
     public P2Task2Linear(MainWindow window) {
         super(window);
 
-        name = "Task 2 - Multiply the Digits in an Integer";
+        name = "Week 2 Task 2 - Multiply the Digits in an Integer";
         description = "<p>Write a program that reads an integer between 0 and 1000 and multiplies all the digits in the integer. For example, if an integer is 932, the multiplication of all its digits is 54.</p><p><i>Hint:</i> Use the % operator to extract digits, and use the / operator to remove the extracted digit. For instance, 932 % 10 = 2 and 932 / 10 = 93.</p><p><i>For now, just focus on 3 digits.</i></p>";
     }
 
