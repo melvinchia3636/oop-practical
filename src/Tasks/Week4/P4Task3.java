@@ -10,9 +10,9 @@ import javax.swing.*;
 import java.util.Arrays;
 
 public class P4Task3 extends TaskInstance {
-    TextInput country1Input;
-    TextInput country2Input;
-    TextInput country3Input;
+    private TextInput country1Input;
+    private TextInput country2Input;
+    private TextInput country3Input;
 
     public P4Task3(MainWindow window) {
         super(window);

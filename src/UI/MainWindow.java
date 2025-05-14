@@ -10,9 +10,11 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 import Tasks.Week3.P3Task1;
+import Tasks.Week3.P3Task2;
+import Tasks.Week3.P3Task3;
 import Tasks.Week4.*;
 import UI.components.HyperLinkButton;
-import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
 
 public class MainWindow {
     private TaskGroup[] allTasks;
@@ -105,6 +107,8 @@ public class MainWindow {
 
         TaskInstance[] week3Tasks = new TaskInstance[]{
                 new P3Task1(this),
+                new P3Task2(this),
+                new P3Task3(this),
         };
 
         TaskInstance[] week4Tasks = new TaskInstance[]{
@@ -131,12 +135,12 @@ public class MainWindow {
         headerPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 100));
 
         // Define the title content
-        JLabel mainTitle = new JLabel("[ITS63304] Practical 2", JLabel.CENTER);
-        JLabel secondaryTitle = new JLabel("Task Implementations", JLabel.CENTER);
+        JLabel mainTitle = new JLabel("[ITS63304] Object Oriented Programming", JLabel.CENTER);
+        JLabel secondaryTitle = new JLabel("Practical Task Implementations", JLabel.CENTER);
 
         // Adjust the font weight and size
         mainTitle.setFont(mainTitle.getFont().deriveFont(Font.BOLD).deriveFont(18.0f));
-        secondaryTitle.setFont(secondaryTitle.getFont().deriveFont(14.0f));
+        secondaryTitle.setFont(secondaryTitle.getFont().deriveFont(16.0f));
 
         // Center the labels
         mainTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -150,7 +154,6 @@ public class MainWindow {
 
     private void prepareTaskGroupsSelectBox() {
         String[] taskGroupNames = new String[allTasks.length];
-
         for (int i = 0; i < allTasks.length; i++) {
             taskGroupNames[i] = allTasks[i].name;
         }
@@ -165,7 +168,6 @@ public class MainWindow {
     }
 
     private void prepareTaskSelectBox() {
-        // Initialize the task selection box
         taskSelectBox = new JComboBox<>();
         taskSelectBox.setBorder(BorderFactory.createCompoundBorder(
                 taskSelectBox.getBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)
@@ -179,7 +181,7 @@ public class MainWindow {
         taskContainer.setAlignmentX(Component.CENTER_ALIGNMENT);
         taskContainer.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
 
-        Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+        Border border = BorderFactory.createLineBorder(Color.GRAY);
         Border padding = BorderFactory.createEmptyBorder(10, 10, 10, 10);
         taskContainer.setBorder(BorderFactory.createCompoundBorder(border, padding));
 
@@ -260,7 +262,7 @@ public class MainWindow {
 
         // Add all elements into the main container
         mainPanel.add(headerPanel);
-        mainPanel.add(Box.createRigidArea(new Dimension(0, 16)));
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         mainPanel.add(taskGroupComboBox);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         mainPanel.add(taskSelectBox);
@@ -274,7 +276,7 @@ public class MainWindow {
     }
 
     public static void main(String[] args) {
-        FlatLightLaf.setup();
+        FlatDarkLaf.setup();
 
         new MainWindow();
     }

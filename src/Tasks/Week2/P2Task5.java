@@ -13,8 +13,8 @@ public class P2Task5 extends TaskInstance {
     private final static double INCHES_TO_METERS_RATIO = 0.0254;
     private final static double POUNDS_TO_KG_RATIO = 0.45359237;
 
-    TextInput heightInput;
-    TextInput weightInput;
+    private TextInput heightInput;
+    private TextInput weightInput;
 
     public P2Task5(MainWindow window) {
         super(window);

@@ -1,11 +1,13 @@
 package UI.components;
 
+import java.awt.*;
+
 public class FormItem {
     protected String name;
-    protected TextInput textInput;
+    protected Component input;
 
-    public FormItem(String name, TextInput textInput) {
+    public FormItem(String name, Component component) {
         this.name = name;
-        this.textInput = textInput;
+        this.input = component;
     }
 }

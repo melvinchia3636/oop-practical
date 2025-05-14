@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class P4Task5Amended extends TaskInstance {
     private HashMap<Character, String> CHARACTER_MAPPING;
 
-    TextInput numberSequenceInput;
+    private TextInput numberSequenceInput;
 
     public P4Task5Amended(MainWindow window) {
         super(window);

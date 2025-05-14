@@ -9,7 +9,7 @@ import UI.components.TextInput;
 import javax.swing.*;
 
 public class P4Task6 extends TaskInstance {
-    TextInput SSNInput;
+    private TextInput SSNInput;
 
     public P4Task6(MainWindow window) {
         super(window);

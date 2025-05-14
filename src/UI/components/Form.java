@@ -33,7 +33,7 @@ public class Form extends JPanel {
 
             gbc.gridx = 1;
             gbc.weightx = 1.0;
-            add(item.textInput, gbc);
+            add(item.input, gbc);
 
             gbc.gridy++;
         }

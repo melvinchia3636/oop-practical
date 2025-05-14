@@ -9,8 +9,8 @@ import UI.components.TextInput;
 import javax.swing.*;
 
 public class P4Task1 extends TaskInstance {
-    TextInput sideCountInput;
-    TextInput sideLengthInput;
+    private TextInput sideCountInput;
+    private TextInput sideLengthInput;
 
     public P4Task1(MainWindow window) {
         super(window);

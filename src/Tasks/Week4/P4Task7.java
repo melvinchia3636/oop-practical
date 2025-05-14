@@ -13,7 +13,7 @@ public class P4Task7 extends TaskInstance {
     private HashMap<Character, String> MAJOR_CODE;
     private HashMap<Integer, String> YEAR_OF_STUDY;
 
-    TextInput twoCharInput;
+    private TextInput twoCharInput;
 
     public P4Task7(MainWindow window) {
         super(window);

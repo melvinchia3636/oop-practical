@@ -9,7 +9,7 @@ import UI.components.TextInput;
 import javax.swing.*;
 
 public class P3Task1 extends TaskInstance {
-    TextInput waveLengthInput;
+    private TextInput waveLengthInput;
 
     public P3Task1(MainWindow window) {
         super(window);

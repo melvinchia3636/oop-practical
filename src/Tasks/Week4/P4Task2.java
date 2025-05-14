@@ -15,7 +15,7 @@ class RandomCharResult {
 }
 
 public class P4Task2 extends TaskInstance {
-    TextInput characterInput;
+    private TextInput characterInput;
 
     public P4Task2(MainWindow window) {
         super(window);

@@ -14,7 +14,7 @@ public class HyperLinkButton extends JButton {
     public HyperLinkButton(String text, String url) {
         // Initialize the button, setting text content and basic styling
         super(text);
-        setForeground(Color.BLUE);
+        setForeground(Color.WHITE);
         setBackground(null);
         setBorder(BorderFactory.createEmptyBorder());
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
