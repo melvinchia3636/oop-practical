@@ -1,6 +1,6 @@
-<center><h1 align="center">☕️ OOP - Practical 2</h1></center>
+<center><h1 align="center">☕️ OOP - Practical Task Implementations</h1></center>
 
-<p align="center">A GUI wrapper for the 5 tasks given in my uni OOP course</p>
+<p align="center">A GUI wrapper for the all the tasks given in my uni OOP course</p>
 
 ## The Problem
 
