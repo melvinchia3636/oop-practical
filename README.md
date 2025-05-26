@@ -1,6 +1,6 @@
-<center><h1 align="center">☕️ OOP - Practical 2</h1></center>
+<center><h1 align="center">☕️ OOP - Practical Task Implementations</h1></center>
 
-<p align="center">A GUI wrapper for the 5 tasks given in my uni OOP course</p>
+<p align="center">A GUI wrapper for the all the tasks given in my uni OOP course</p>
 
 ## The Problem
 
@@ -15,11 +15,7 @@ So yeah, when other people are still implementing the tasks given by the lecture
 ## 🖥 Screenshots
 
 <div>
-  <img width="49%" alt="Screenshot 2025-05-01 at 4 04 04 PM" src="https://github.com/user-attachments/assets/7a8bde53-6e5d-44ee-b354-680bc69729e1" />
-  <img width="49%" alt="Screenshot 2025-05-01 at 4 04 10 PM" src="https://github.com/user-attachments/assets/1049ba89-5244-4cc2-a9b0-e80e568c6961" />
-  <img width="49%" alt="Screenshot 2025-05-01 at 4 04 16 PM" src="https://github.com/user-attachments/assets/b47e2493-481d-4944-8824-a5d4062bb3e9" />
-  <img width="49%" alt="Screenshot 2025-05-01 at 4 05 30 PM" src="https://github.com/user-attachments/assets/05e7a2f0-366d-4e66-9eaa-1a68e61fe152" />
-  <img width="49%" alt="Screenshot 2025-05-01 at 4 06 19 PM" src="https://github.com/user-attachments/assets/1161e72c-f758-4be5-9bae-661683390a05" />
+  <img width="100%" alt="image" src="https://github.com/user-attachments/assets/e36ef252-4564-4f8b-b65e-248559bd600c" />
 </div>
 
 ## 🔬 Technologies Used 
