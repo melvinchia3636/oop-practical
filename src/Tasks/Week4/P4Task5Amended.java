@@ -40,7 +40,7 @@ public class P4Task5Amended extends TaskInstance {
 
         for (char c : numberSequence) {
             if (!CHARACTER_MAPPING.containsKey(c) && c != '0') {
-                JOptionPane.showMessageDialog(null, "All numbers must be digits!", "Input Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "All numbers must be mapped to alphabets!", "Input Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
         }

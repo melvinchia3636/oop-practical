@@ -19,6 +19,15 @@ public class Form extends JPanel {
         prepareForm();
     }
 
+    public Form(FormItem[] items) {
+        super();
+        setLayout(new GridBagLayout());
+        gbc = new GridBagConstraints();
+        this.items = items;
+
+        prepareForm();
+    }
+
     private void prepareForm() {
         // Gap between each component
         gbc.insets = new Insets(5, 5, 5, 5);
@@ -44,6 +53,10 @@ public class Form extends JPanel {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         add(Box.createVerticalGlue(), gbc);
+
+        if (actionListener == null) {
+            return;
+        }
 
         // Submit button
         SubmitButton submitButton = new SubmitButton(actionListener);

@@ -5,6 +5,7 @@ import UI.MainWindow;
 import UI.components.Form;
 import UI.components.FormItem;
 import UI.components.TextInput;
+import org.w3c.dom.ranges.RangeException;
 
 import javax.swing.*;
 
@@ -53,7 +54,7 @@ public class P3Task1 extends TaskInstance {
             String tempLevel = "";
 
             if (colorCode == null) {
-                throw new Error("OUT_OF_RANGE");
+                throw new IllegalArgumentException("The entered wavelength is not a part of the visible spectrum");
             }
 
             if (colorCode.equals("Green")) {
@@ -63,13 +64,12 @@ public class P3Task1 extends TaskInstance {
             }
 
             JOptionPane.showMessageDialog(null, "The color is " + tempLevel + colorCode);
-        } catch (Error e) {
-            if (e.getMessage().equals("OUT_OF_RANGE")) {
-                JOptionPane.showMessageDialog(null, "The entered wavelength is not a part of the visible spectrum", "Out of Range Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
+        } catch (NumberFormatException e) {
             // Show error when the user input is invalid (aka not a proper double)
             JOptionPane.showMessageDialog(null, "Please enter a valid number.", "Number Parsing Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            // Show error when the user input is out of rang
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Out of Range Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

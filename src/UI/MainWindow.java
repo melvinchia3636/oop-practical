@@ -13,6 +13,7 @@ import Tasks.Week3.P3Task1;
 import Tasks.Week3.P3Task2;
 import Tasks.Week3.P3Task3;
 import Tasks.Week4.*;
+import Tasks.Week5.*;
 import UI.components.HyperLinkButton;
 import com.formdev.flatlaf.FlatDarkLaf;
 
@@ -122,10 +123,21 @@ public class MainWindow {
                 new P4Task7(this),
         };
 
+        TaskInstance[] week5Tasks = new TaskInstance[]{
+                new P5Task1(this),
+                new P5Task2(this),
+                new P5Task3(this),
+                new P5Task4(this),
+                new P5Task5(this),
+                new P5Task6(this),
+                new P5Task7(this)
+        };
+
         allTasks = new TaskGroup[]{
-                new TaskGroup("Week 2 - Linear Implementations", week2Tasks),
-                new TaskGroup("Week 3 - Selection Structures", week3Tasks),
+                new TaskGroup("Week 2 - Linear Implementation", week2Tasks),
+                new TaskGroup("Week 3 - Selection Structure", week3Tasks),
                 new TaskGroup("Week 4 - Java Class API", week4Tasks),
+                new TaskGroup("Week 5 - Loop (Repetition Structure)", week5Tasks),
         };
     }
 
