@@ -14,6 +14,7 @@ import Tasks.Week3.P3Task2;
 import Tasks.Week3.P3Task3;
 import Tasks.Week4.*;
 import Tasks.Week5.*;
+import Tasks.Week6.*;
 import UI.components.HyperLinkButton;
 import com.formdev.flatlaf.FlatDarkLaf;
 
@@ -93,7 +94,8 @@ public class MainWindow {
                     }
                 }
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
     }
 
     // Manage your task instances here :)
@@ -133,11 +135,20 @@ public class MainWindow {
                 new P5Task7(this)
         };
 
+        TaskInstance[] week6Tasks = new TaskInstance[]{
+                new P6Task1(this),
+                new P6Task2(this),
+                new P6Task3(this),
+                new P6Task4(this),
+                new P6Task5(this)
+        };
+
         allTasks = new TaskGroup[]{
                 new TaskGroup("Week 2 - Linear Implementation", week2Tasks),
                 new TaskGroup("Week 3 - Selection Structure", week3Tasks),
                 new TaskGroup("Week 4 - Java Class API", week4Tasks),
                 new TaskGroup("Week 5 - Loop (Repetition Structure)", week5Tasks),
+                new TaskGroup("Week 6 - Methods", week6Tasks)
         };
     }
 
