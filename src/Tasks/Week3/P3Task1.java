@@ -5,7 +5,6 @@ import UI.MainWindow;
 import UI.components.Form;
 import UI.components.FormItem;
 import UI.components.TextInput;
-import org.w3c.dom.ranges.RangeException;
 
 import javax.swing.*;
 

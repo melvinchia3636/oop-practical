@@ -55,7 +55,7 @@ public class P5Task6 extends TaskInstance {
     }
 
     private static double calculateCommission(double sales) {
-        double commission = 0.0;
+        double commission;
 
         if (sales <= 5000) {
             commission = sales * 0.06;

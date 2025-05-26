@@ -38,7 +38,7 @@ public class P5Task4 extends TaskInstance {
 
         int currentIndex = 0;
         while (currentIndex < numberOfStudents) {
-            String name = "";
+            String name;
             name = JOptionPane.showInputDialog("Enter the name of student " + (currentIndex + 1) + ":").trim();
 
             if (name.isEmpty()) {
@@ -47,7 +47,7 @@ public class P5Task4 extends TaskInstance {
             }
 
 
-            double score = -1;
+            double score;
             try {
                 score = Double.parseDouble(JOptionPane.showInputDialog("Enter the score of " + name + ":"));
 
