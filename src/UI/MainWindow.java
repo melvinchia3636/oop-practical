@@ -15,8 +15,11 @@ import Tasks.Week3.P3Task3;
 import Tasks.Week4.*;
 import Tasks.Week5.*;
 import Tasks.Week6.*;
+import Tasks.Week7.P7Task1;
+import Tasks.Week7.P7Task2;
+import Tasks.Week7.P7Task3;
+import Tasks.Week7.P7Task4;
 import UI.components.HyperLinkButton;
-import com.formdev.flatlaf.FlatDarkLaf;
 
 public class MainWindow {
     private TaskGroup[] allTasks;
@@ -143,12 +146,20 @@ public class MainWindow {
                 new P6Task5(this)
         };
 
+        TaskInstance[] week7Tasks = new TaskInstance[] {
+                new P7Task1(this),
+                new P7Task2(this),
+                new P7Task3(this),
+                new P7Task4(this)
+        };
+
         allTasks = new TaskGroup[]{
                 new TaskGroup("Week 2 - Linear Implementation", week2Tasks),
                 new TaskGroup("Week 3 - Selection Structure", week3Tasks),
                 new TaskGroup("Week 4 - Java Class API", week4Tasks),
                 new TaskGroup("Week 5 - Loop (Repetition Structure)", week5Tasks),
-                new TaskGroup("Week 6 - Methods", week6Tasks)
+                new TaskGroup("Week 6 - Methods", week6Tasks),
+                new TaskGroup("Week 7 - Arrays", week7Tasks)
         };
     }
 
@@ -296,11 +307,5 @@ public class MainWindow {
 
         mainFrame.setContentPane(mainPanel);
         mainFrame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        FlatDarkLaf.setup();
-
-        new MainWindow();
     }
 }

@@ -75,15 +75,15 @@ public class P5Task4 extends TaskInstance {
         double secondLowestScore = Double.MAX_VALUE;
 
         // Iterate through scores to find the lowest and second-lowest scores
-        for (int i = 0; i < result.scores.length; i++) {
+        for (double score : result.scores) {
             // If the current score is lower than the lowest score, of course it becomes the new lowest score
             // Also yeet the previous lowest score to the second-lowest score
-            if (result.scores[i] < lowestScore) {
+            if (score < lowestScore) {
                 secondLowestScore = lowestScore;
-                lowestScore = result.scores[i];
+                lowestScore = score;
                 // If the current score is between the lowest and second-lowest scores, it becomes the new second-lowest score
-            } else if (result.scores[i] < secondLowestScore && result.scores[i] != lowestScore) {
-                secondLowestScore = result.scores[i];
+            } else if (score < secondLowestScore && score != lowestScore) {
+                secondLowestScore = score;
             }
         }
 
@@ -133,9 +133,12 @@ public class P5Task4 extends TaskInstance {
             String concatenatedLowestNames = String.join(", ", lowestScores.lowestNames);
             String concatenatedSecondLowestNames = String.join(", ", lowestScores.secondLowestNames);
 
-            String message = String.format("Lowest Score: %s with %.2f\nSecond Lowest Score: %s with %.2f",
+            String message = String.format("Lowest Score: %s with %.2f\nSecond Lowest Score: %s",
                     concatenatedLowestNames, lowestScores.lowestScore,
-                    !concatenatedSecondLowestNames.isEmpty() ? concatenatedSecondLowestNames : "No one", lowestScores.secondLowestScore);
+                    !concatenatedSecondLowestNames.isEmpty() ? concatenatedSecondLowestNames : "No one");
+            if (lowestScores.secondLowestScore != -1) {
+                message += String.format(" with %.2f", lowestScores.secondLowestScore);
+            }
 
             JOptionPane.showMessageDialog(null, message, "Lowest Scores", JOptionPane.INFORMATION_MESSAGE);
         } catch (NumberFormatException e) {

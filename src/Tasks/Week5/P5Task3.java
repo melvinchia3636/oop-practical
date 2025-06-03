@@ -25,7 +25,7 @@ public class P5Task3 extends TaskInstance {
 
         // Calculate the tuition in 10 years
         for (int i = 1; i <= 14; i++) {
-            double currentTuition = INITIAL_TUITION + (INITIAL_TUITION * (TUITION_INCREASE_RATE) * i);
+            double currentTuition = INITIAL_TUITION * (1 + TUITION_INCREASE_RATE * i);
 
             if (i <= 10) {
                 tuitionFeesByYear[i - 1] = currentTuition;

@@ -25,7 +25,7 @@ public class P6Task2 extends TaskInstance {
     private static double[] sortNumbersDescending(double num1, double num2, double num3) {
         double[] numbers = new double[3];
 
-        // Stupidest and most naive way to sort three numbers
+        // Most naive way to sort three numbers
         if (num1 >= num2 && num1 >= num3) {
             numbers[0] = num1;
 
@@ -68,6 +68,7 @@ public class P6Task2 extends TaskInstance {
             double num3 = Double.parseDouble(num3Input.getText());
 
             double[] sortedNumbers = sortNumbersDescending(num1, num2, num3);
+
             String message = String.format("The numbers in decreasing order are: %.2f, %.2f, %.2f", sortedNumbers[0], sortedNumbers[1], sortedNumbers[2]);
             JOptionPane.showMessageDialog(null, message);
         } catch (NumberFormatException e) {
